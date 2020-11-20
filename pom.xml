@@ -26,6 +26,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.adobe.aem</groupId>
+      <artifactId>aem-sdk-api</artifactId>
+      <version>2020.11.4506.20201112T235200Z-201028</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
       <artifactId>accesscontroltool-package</artifactId>
       <version>2.6.2</version>
