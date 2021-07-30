@@ -1,41 +1,87 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>biz.netcentric.aem</groupId>
-  <artifactId>aem-analyser-example</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>aem-analyse</packaging>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>simpleArtifactId-cloud</artifactId>
+    <groupId>simpleGroupId</groupId>
+    <packaging>pom</packaging>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.adobe.aem</groupId>
-        <artifactId>aemanalyser-maven-plugin</artifactId>
-        <version>0.0.14</version>
-        <extensions>true</extensions>
-      </plugin>
-      <plugin>
-        <!-- creates filevault-packages, http://jackrabbit.apache.org/filevault-package-maven-plugin/index.html -->
-        <groupId>org.apache.jackrabbit</groupId>
-        <artifactId>filevault-package-maven-plugin</artifactId>
-        <version>1.1.4</version>
-        <extensions>true</extensions>
-      </plugin>
-    </plugins>
-  </build>
+    <name>SimpleName</name>
+    <description>Simple Description</description>
+    <version>1.0.0-SNAPSHOT</version>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.adobe.aem</groupId>
-      <artifactId>aem-sdk-api</artifactId>
-      <version>2020.11.4506.20201112T235200Z-201028</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
-      <artifactId>accesscontroltool-package</artifactId>
-      <version>2.6.2</version>
-      <type>zip</type>
-    </dependency>
-  </dependencies>
+    <!-- override properties from parent poms with project specific values -->
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release> <!-- used for compiler plugin and animal-sniffer, for the format see source property of http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javac.html -->
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+          <dependency>
+              <groupId>io.wcm.maven</groupId>
+              <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
+              <version>2021.6.5382.20210602T190018Z-210527.0000</version>
+              <type>pom</type>
+             <scope>import</scope>
+          </dependency>
+
+            <!-- some testing dependencies used throughout the whole project -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.7.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>2.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>3.11.0</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.sling</groupId>
+                <artifactId>org.apache.sling.testing.sling-mock.junit5</artifactId>
+                <version>3.0.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.wcm</groupId>
+                <artifactId>io.wcm.testing.aem-mock.junit5</artifactId>
+                <version>4.0.4</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- for testing OSGi DS component property types -->
+            <dependency>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>org.apache.felix.converter</artifactId>
+                <version>1.0.18</version>
+                <scope>test</scope>
+          </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-compiler-plugin</artifactId>
+                  <version>3.8.1</version>
+             </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+
+    <modules>
+      <module>simpleArtifactId-cloud-base-core</module>
+      <module>simpleArtifactId-cloud-all-container</module>
+  </modules>
+
 </project>

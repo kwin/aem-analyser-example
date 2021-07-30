@@ -1,0 +1,6 @@
+# export all versioned packages except for the conditional ones
+-exportcontents: ${removeall;${packages;VERSIONED};${packages;CONDITIONAL}}
+
+# required for bundled scripts (https://sling.apache.org/components/scriptingbundle-maven-plugin/usage.html, https://github.com/apache/sling-org-apache-sling-servlets-resolver#bundled-scripts
+Require-Capability:             osgi.extender;filter:="(&(osgi.extender=sling.scripting)(version>=1.0.0)(!(version>=2.0.0)))"
+-plugin:                        org.apache.sling.scriptingbundle.plugin.bnd.BundledScriptsScannerPlugin

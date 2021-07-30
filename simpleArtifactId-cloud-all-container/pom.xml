@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>simpleGroupId</groupId>
+        <artifactId>simpleArtifactId-cloud</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>simpleArtifactId-cloud-all-container</artifactId>
+    <packaging>content-package</packaging>
+    <name>SimpleName - All - Container Package</name>
+    <description>Container package embedding all required packages, bundles and OSGi configurations for SimpleName</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>filevault-package-maven-plugin</artifactId>
+                <version>1.1.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <packageType>container</packageType>
+                    <embeddedTarget>/apps/testing/install</embeddedTarget>
+                    <embeddeds>
+                        <embedded combine.self="override">
+                            <filter>true</filter>
+                            <type>content-package,zip,jar</type>
+                            <scope>compile</scope>
+                            <!-- only consider direct dependencies -->
+                            <excludeTransitive>true</excludeTransitive>
+                            <isAllVersionsFilter>true</isAllVersionsFilter>
+                        </embedded>
+                    </embeddeds>
+                    <properties>
+                        <!-- Set Cloud Manager Target to something but "none" to deploy via CloudManager -->
+                        <cloudManagerTarget>deploy</cloudManagerTarget>
+                    </properties>
+                    <!-- all sub packages are part of the reactor (i.e. have been validated already) -->
+                    <skipSubPackageValidation>true</skipSubPackageValidation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- https://experienceleague.adobe.com/docs/experience-manager-core-components/using/developing/archetype/build-analyzer-maven-plugin.html?lang=en#developing  -->
+                <groupId>com.adobe.aem</groupId>
+                <artifactId>aemanalyser-maven-plugin</artifactId>
+                <version>1.0.12</version>
+                <executions>
+                <execution>
+                    <id>aem-analyser</id>
+                    <goals>
+                        <goal>project-analyse</goal>                           
+                    </goals>
+                </execution>
+            </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <artifactId>simpleArtifactId-cloud-base-core</artifactId>
+            <groupId>simpleGroupId</groupId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

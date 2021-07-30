@@ -1,0 +1,59 @@
+# Maven
+target/
+.flattened-pom.xml
+**/jcr_root/META-INF
+.repository/
+.releasebuild/
+.serverDef/
+*.log
+
+# IDEA vscode
+.vscode/
+
+#idea other
+.idea
+.idea/checks-style.xml
+.externalToolBuilders/
+*.iml
+atlassian-ide-plugin.xml
+
+# File Vault (VLT) / Sync
+.vlt
+.vlt-sync*
+
+# Eclipse
+.project
+.classpath
+.settings
+
+# IntelliJ
+.idea/
+*.iml*
+*.ipr
+
+# Brackets
+.brackets.json
+
+# VSCode
+.history
+
+# Mac OS X
+.DS_Store
+*.swp
+
+# Node related files
+node_modules/
+node/
+typings
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.stylelintcache
+.eslintcache
+
+# FE build generated files
+*.bundle.*
+*.chunk.*
+symbols.svg
+.tmp/
+.cache-loader
