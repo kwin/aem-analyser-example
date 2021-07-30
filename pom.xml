@@ -18,51 +18,9 @@
     <dependencyManagement>
         <dependencies>
           <dependency>
-              <groupId>io.wcm.maven</groupId>
-              <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-              <version>2021.6.5382.20210602T190018Z-210527.0000</version>
-              <type>pom</type>
-             <scope>import</scope>
-          </dependency>
-
-            <!-- some testing dependencies used throughout the whole project -->
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>5.7.2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest</artifactId>
-                <version>2.2</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>3.11.0</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.testing.sling-mock.junit5</artifactId>
-                <version>3.0.2</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.wcm</groupId>
-                <artifactId>io.wcm.testing.aem-mock.junit5</artifactId>
-                <version>4.0.4</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- for testing OSGi DS component property types -->
-            <dependency>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>org.apache.felix.converter</artifactId>
-                <version>1.0.18</version>
-                <scope>test</scope>
+              <groupId>com.adobe.aem</groupId>
+              <artifactId>aem-sdk-api</artifactId>
+              <version>2021.7.5662.20210726T181801Z-210700</version>
           </dependency>
         </dependencies>
     </dependencyManagement>
@@ -74,6 +32,11 @@
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-compiler-plugin</artifactId>
                   <version>3.8.1</version>
+             </plugin>
+             <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-jar-plugin</artifactId>
+                  <version>3.2.0</version>
              </plugin>
         </plugins>
     </pluginManagement>
